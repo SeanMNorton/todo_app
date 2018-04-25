@@ -13,5 +13,12 @@ RSpec.describe ListsController, type: :controller do
        expect(response).to render_template("show")
      end
    end
-   
+
+   describe "GET new" do
+     it "assigns @list" do
+       get :new
+       expect(assigns(:list)).to be_a_kind_of(List)
+     end
+   end
+
 end
