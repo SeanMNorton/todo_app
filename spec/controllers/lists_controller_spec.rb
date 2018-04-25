@@ -49,4 +49,23 @@ RSpec.describe ListsController, type: :controller do
      end
    end
 
+   describe "DELETE destroy" do
+     before do
+       @list = List.create(title: 'List Title', description: "description")
+     end
+     it "deletes list from database" do
+       list_count = List.count
+       post :destroy, params:{id: @list.id}
+       expect(List.count).to eq(list_count - 1)
+     end
+     it "redirects to list index" do
+        post :destroy, params:{id: @list.id}
+        expect(response).to redirect_to :action => :index
+     end
+   end
+
+   describe "GET Edit" do
+
+   end
+
 end
