@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "routing to lists", :type => :routing do
+
   it "routes /lists to list#index" do
     expect(:get => "/lists").to route_to(
       :controller => "lists",
