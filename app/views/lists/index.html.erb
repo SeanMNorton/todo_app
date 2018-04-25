@@ -1,3 +1,6 @@
 <% @lists.each do |list| %>
-  <h1><%= list.title %></h1>
+  <h1><%= link_to "#{list.title}", list, class: "btn btn-primary" %></h1>
+  <%= render "shared_links", object: list  %>
 <% end %>
+
+<div><%= link_to "New List", new_list_path , class: "btn btn-primary" %></div>

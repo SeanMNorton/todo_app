@@ -41,3 +41,19 @@ RSpec.describe "lists/new", :type => :view do
     expect(rendered).to include("New List")
   end
 end
+
+
+RSpec.describe "lists/edit", :type => :view do
+  before do
+    list = List.new(title: "Title", description: "Description")
+    assign(:list, list)
+  end
+  it "displays list form partial" do
+    render
+    expect(rendered).to render_template('lists/_form')
+  end
+  it "displays New List" do
+    render
+    expect(rendered).to include("Edit List")
+  end
+end

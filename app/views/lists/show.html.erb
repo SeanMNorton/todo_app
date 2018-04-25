@@ -1,3 +1,7 @@
 <h1><%= @list.title %></h1>
 <h2><%= @list.description %></h2>
 <%= render "shared_links", object: @list  %>
+
+<div>
+  <%= link_to "All Lists", lists_path, class: "btn btn-primary" %>
+</div>
