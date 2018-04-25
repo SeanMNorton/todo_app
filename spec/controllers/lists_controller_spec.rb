@@ -14,7 +14,6 @@ RSpec.describe ListsController, type: :controller do
       end
   end
 
-
   describe "GET show" do
     before {  @list = List.create(title: 'List Title', description: "description") }
      it "assigns @list" do
@@ -31,6 +30,22 @@ RSpec.describe ListsController, type: :controller do
      it "assigns @list" do
        get :new
        expect(assigns(:list)).to be_a_kind_of(List)
+     end
+   end
+
+   describe "GET create" do
+     before { @list_params = {title: 'List Title', description: "description"} }
+     it "assigns @list" do
+       post :create, params:{ list: @list_params }
+       expect(assigns(:list)).to be_a_kind_of(List)
+     end
+     it "redirects to show on save" do
+       post :create, params:{ list: @list_params }
+        expect(response).to redirect_to :action => :show, :id => assigns(:list).id
+     end
+     it "renders new if it can not save" do
+       post :create, params:{ list:{title: nil, description: "some text"} }
+       expect(response).to render_template('new')
      end
    end
 
