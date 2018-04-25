@@ -1,9 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe "lists/index", :type => :view do
-  it "renders hello world" do
+  before do
+    assign(:lists, [
+      List.create(title: 'List Title', description: "description"),
+      List.create(title: 'List Title 2', description: "description 2")
+      ])
+  end
+  it "renders all list titles" do
     render
-    expect(rendered).to include("Hello World")
+    expect(rendered).to include("List Title")
+    expect(rendered).to include("List Title 2")
   end
 end
 
@@ -25,8 +32,12 @@ end
 
 RSpec.describe "lists/new", :type => :view do
   before { assign(:list, List.new()) }
-  it "list form partial" do
+  it "displays list form partial" do
     render
     expect(rendered).to include("Title")
+  end
+  it "displays New List" do
+    render
+    expect(rendered).to include("New List")
   end
 end

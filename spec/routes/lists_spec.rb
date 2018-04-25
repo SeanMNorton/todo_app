@@ -18,4 +18,11 @@ RSpec.describe "routing to lists", :type => :routing do
       :id => "#{@list.id}"
     )
   end
+
+  it "routes /lists/new to list#new" do
+    expect(:get => "/lists/new").to route_to(
+      :controller => "lists",
+      :action => "new",
+    )
+  end
 end
