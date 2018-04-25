@@ -64,7 +64,7 @@ RSpec.describe ListsController, type: :controller do
      end
      it "redirects to list index" do
         post :destroy, params:{id: @list.id}
-        expect(response).to redirect_to :action => :index
+        expect(response).to redirect_to lists_path
      end
    end
 

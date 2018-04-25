@@ -17,7 +17,7 @@ end
 
 RSpec.describe "lists/show", :type => :view do
   before do
-    assign(:list, List.new(title: "My title", description: "List description"))
+    assign(:list, List.create(title: "My title", description: "List description"))
   end
   it "displays the list title" do
     render
